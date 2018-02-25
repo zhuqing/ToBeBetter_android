@@ -1,7 +1,11 @@
 package xyz.tobebetter.sf.task;
 
 
-
+import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
@@ -19,6 +23,14 @@ public class HttpPostTask<T> extends HttpTask<T> {
 
     @Override
     protected T getT(RestTemplate restTemplate) {
-        return restTemplate.postForObject(this.getPath(),null,this.getClaz(),this.getVariables());
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headers.setContentType(type);
+        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+
+        JSONObject jsonObj = new JSONObject(this.getVariables());
+        HttpEntity<String> formEntity = new HttpEntity<String>(jsonObj.toString(), headers);
+
+        return (T) restTemplate.postForObject(this.getPath(),formEntity,this.getClaz());
     }
 }

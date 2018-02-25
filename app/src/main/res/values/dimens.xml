@@ -5,4 +5,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="view_vertical_margin">20dp</dimen>
     <dimen name="app_top_pading">64dp</dimen>
+    <dimen name="center_padding">80dp</dimen>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import xyz.tobebetter.R;
+import xyz.tobebetter.controller.ProposeController;
 
 
 /**
@@ -23,6 +24,7 @@ public class ThirdFrament extends Fragment {
             homeView = inflater.inflate(R.layout.third,null);
         }
 
+        new ProposeController(this.homeView).init();
         return this.homeView;
     }
 

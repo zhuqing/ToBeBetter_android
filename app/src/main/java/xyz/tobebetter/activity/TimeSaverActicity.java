@@ -57,7 +57,7 @@ public class TimeSaverActicity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if( mediaPlayer == null){
+        if( mediaPlayer != null){
             mediaPlayer.release();
         }
     }

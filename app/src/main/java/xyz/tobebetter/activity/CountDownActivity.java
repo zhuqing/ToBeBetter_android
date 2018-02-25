@@ -1,8 +1,6 @@
 package xyz.tobebetter.activity;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.util.BundleUtil;
@@ -27,24 +28,52 @@ public class CountDownActivity extends AppCompatActivity {
     private boolean counting = false;
     private Button countDownTextButton;
 
+    private TextView countDownCancel;
 
 
     private TimeUtil time;
 
     private UserTask userTask;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
-    class LQStatus{
-        private LQStatusEnum status = LQStatusEnum.START;
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
 
 
     }
 
-    enum LQStatusEnum{
-        START,
-        STOP,
-        CONTINUE,
-        RUNNING
 
+
+    enum LQStatusEnum {
+        START(R.string.start),
+        STOP(R.string.stop),
+        CONTINUE(R.string.continue_),
+        RUNNING(R.string.start);
+
+        private int rid;
+
+        private LQStatusEnum(int rid) {
+            this.rid = rid;
+        }
+
+        public int getRid() {
+            return rid;
+        }
+
+        public void setRid(int rid) {
+            this.rid = rid;
+        }
     }
 
     @Override
@@ -52,12 +81,16 @@ public class CountDownActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.count_down);
 
-         userTask = (UserTask) this.getIntent().getExtras().getSerializable(BundleUtil.DATA);
-        time = TimeUtil.createTime(userTask.getMinutes());
+        userTask = (UserTask) this.getIntent().getExtras().getSerializable(BundleUtil.DATA);
+        time = TimeUtil.createTime(userTask.getSeconds());
 
         this.countDownTextButton = (Button) this.findViewById(R.id.count_down_button);
         this.countDownTextView = (TextView) this.findViewById(R.id.count_down_text);
+        this.countDownCancel = (TextView) this.findViewById(R.id.count_down_cancel);
         this.init();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+       // client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void init() {
@@ -76,7 +109,18 @@ public class CountDownActivity extends AppCompatActivity {
             }
         });
 
-        this.countDownTextView.setText(time.getMinute() + ":00");
+        this.countDownTextView.setText(time.getSeconds()/60 +":" + time.getSeconds()%60);
+
+
+        this.countDownCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                getApplicationContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -110,5 +154,8 @@ public class CountDownActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if(time!=null){
+            time.stop();
+        }
     }
 }

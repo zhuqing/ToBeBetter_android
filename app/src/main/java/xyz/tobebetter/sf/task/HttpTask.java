@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 
-
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,6 +34,9 @@ public abstract   class HttpTask<T> extends AsyncTask<Object, Object, T> {
         try {
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+
+            restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
             return this.getT(restTemplate);
         } catch (Exception e) {
             Log.e("MainActivity", e.getMessage(), e);

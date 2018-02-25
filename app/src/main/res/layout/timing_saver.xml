@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/time_saver">
+<RelativeLayout
+    android:id="@+id/timing_saver_center"
+    android:layout_centerInParent="true"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/center_padding"></RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/timing_saver_timing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/timing_saver_center"
+        />
+    <TextView
+        android:text="计时结束"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/timing_saver_timing"/>
+
+
+    <RelativeLayout
+        android:layout_alignBottom="@id/timing_saver_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/timing_saver_save_as_time"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_as_time"/>
+        <Button
+            android:id="@+id/timing_saver_close"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close"/>
+    </RelativeLayout>
+</RelativeLayout>

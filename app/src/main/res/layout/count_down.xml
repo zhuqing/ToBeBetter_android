@@ -19,14 +19,25 @@
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@id/count_down_space"
         />
-    <Button
-        android:id="@+id/count_down_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
         android:layout_centerHorizontal="true"
 
         android:layout_below="@id/count_down_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/count_down_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start"/>
+<TextView
+    android:id="@+id/count_down_cancel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/cancel"/>
 
-        android:text="@string/start"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -17,7 +17,7 @@ public class SelectTimeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.time);
-        this.timeGridViewController = new TimeGridViewController(this.findViewById(R.id.time_gridview));
+        this.timeGridViewController = new TimeGridViewController(this.findViewById(R.id.time_select));
         this.timeGridViewController.init();
     }
 }

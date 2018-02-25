@@ -5,8 +5,6 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 
-import xyz.tobebetter.util.LQHandler;
-
 /**
  * 倒计时
  * Created by zhuleqi on 2018/2/10.
@@ -18,15 +16,15 @@ public class TimeUtil {
     public static final int OVER = -1;
     public static final String TIME_STR = "TIME_STR";
 
-    private int minute = 0;
+    private int seconds = 0;
 
     private long millis;
 
     private  CountDownTimer timer;
 
-    private TimeUtil(int minute) {
-        this.minute = minute;
-        this.millis = this.minute*60*1000;
+    private TimeUtil(int seconds) {
+        this.setSeconds(seconds);
+        this.millis = this.getSeconds() *1000;
     }
 
     public static TimeUtil createTime(int minute) {
@@ -74,18 +72,11 @@ public class TimeUtil {
     }
 
 
-
-
-    /**
-     * 分钟
-     */
-    public int getMinute() {
-        return minute;
+    public int getSeconds() {
+        return seconds;
     }
 
-    public void setMinute(int minute) {
-        this.minute = minute;
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
-
-
 }

@@ -16,13 +16,24 @@
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@id/timing_space"
         />
-    <Button
-        android:id="@+id/timing_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_below="@id/timing_space">
 
-        android:layout_below="@id/timing_space"
+        <Button
+            android:id="@+id/timing_start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
 
-        android:text="@string/start"/>
+            android:text="@string/start"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:id="@+id/timing_cancel_textview"/>
+    </LinearLayout>
+
 </RelativeLayout>

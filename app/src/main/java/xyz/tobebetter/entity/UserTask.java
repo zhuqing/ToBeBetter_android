@@ -55,7 +55,7 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
         this.id = id;
     }
     private String title;
-    private Integer minutes;
+    private Integer seconds;
     private Long userId;
 
 
@@ -71,16 +71,8 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
     }
 
 
-    /**
-     * 分钟数
-     */
-    public Integer getMinutes() {
-        return minutes;
-    }
 
-    public void setMinutes(Integer minutes) {
-        this.minutes = minutes;
-    }
+
 
     /**
      * 任务创建的用户Id
@@ -98,7 +90,7 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
         userTask.setId(this.getId());
         userTask.setTitle(this.getTitle());
         userTask.setUserId(this.getUserId());
-        userTask.setMinutes(this.getMinutes());
+        userTask.setSeconds(this.getSeconds());
         userTask.setStatus(this.getStatus());
         userTask.setCreateDate(this.getCreateDate());
         userTask.setUpdateDate(this.getUpdateDate());
@@ -106,4 +98,14 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
     }
 
 
+    /**
+     * 秒数
+     */
+    public Integer getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(Integer seconds) {
+        this.seconds = seconds;
+    }
 }

@@ -13,6 +13,8 @@ public class TimingUtil {
 
     private CountDownTimer timer;
 
+    private int seconds;
+
     public static final int TIMING = 1;
     public static final String TIMING_STR = "TIMING_STR";
 
@@ -40,12 +42,12 @@ public class TimingUtil {
             public void onTick(long millisUntilFinished) {
                 long mills = System.currentTimeMillis()-startTime;
                 long min = mills/1000/60;
-                long sec = mills/1000%60;
+                seconds= (int) (mills/1000%60);
 
                 Message message = new Message();
                 message.what = TIMING;
                 Bundle data = new Bundle();
-                data.putString(TIMING_STR,min+":"+sec);
+                data.putString(TIMING_STR,min+":"+seconds);
                 message.setData(data);
                 handler.sendMessage(message);
             }
@@ -64,4 +66,11 @@ public class TimingUtil {
     }
 
 
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
 }

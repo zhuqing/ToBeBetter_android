@@ -15,6 +15,7 @@ import xyz.tobebetter.fragment.HomeFragment;
 import xyz.tobebetter.fragment.LQFragmentAdapter;
 import xyz.tobebetter.fragment.SecondFrament;
 import xyz.tobebetter.fragment.ThirdFrament;
+import xyz.tobebetter.util.UrlConfigUtil;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         this.content = (FrameLayout) this.findViewById(R.id.content);
 
         this.initViewPage();
+        UrlConfigUtil.init(this);
 
         RealmManager.getInstance().initRealm(this.getApplicationContext());
 

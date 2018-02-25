@@ -15,4 +15,10 @@ public class BundleUtil {
         bundle.putSerializable(key , serializable);
         return bundle;
     }
+
+    public static  Bundle create(String key , int value){
+        Bundle bundle = new Bundle();
+        bundle.putInt(key , value);
+        return bundle;
+    }
 }
