@@ -15,6 +15,7 @@ import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.util.BundleUtil;
+import xyz.tobebetter.util.StringUtil;
 import xyz.tobebetter.util.TimeUtil;
 
 /**
@@ -109,7 +110,7 @@ public class CountDownActivity extends AppCompatActivity {
             }
         });
 
-        this.countDownTextView.setText(time.getSeconds()/60 +":" + time.getSeconds()%60);
+
 
 
         this.countDownCancel.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +123,16 @@ public class CountDownActivity extends AppCompatActivity {
             }
         });
 
+        this.initCountDownTextView();
+
+    }
+
+    private void initCountDownTextView(){
+        int seconds = time.getSeconds()%60;
+        int mins = time.getSeconds()/60;
+        int hours = mins/60;
+        mins = mins%60;
+        this.countDownTextView.setText(StringUtil.toTime(hours,mins,seconds));
     }
 
     private class CountDownHandler extends Handler {

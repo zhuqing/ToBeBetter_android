@@ -6,6 +6,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
+import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.entity.UserTaskRecod;
 import xyz.tobebetter.util.LQHandler;
 
@@ -29,23 +30,19 @@ public class UserTaskRecodeDataManager {
 
     public void insert(final UserTaskRecod userTaskRecod){
 
-        Realm.getDefaultInstance().executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.insert(Arrays.asList(userTaskRecod));
-            }
-        });
+        if(DBManager.getInstance() == null){
+            return;
+        }
+        DBManager.getInstance().getUserTaskRecodDao().insert(userTaskRecod);
 
     }
 
     public void query(Long userId, final LQHandler.Consumer consumer){
-        RealmResults<UserTaskRecod> userTaskRecods = Realm.getDefaultInstance().where(UserTaskRecod.class).equalTo("userId",userId).findAllAsync();
-        userTaskRecods.addChangeListener(new RealmChangeListener<RealmResults<UserTaskRecod>>() {
-            @Override
-            public void onChange(RealmResults<UserTaskRecod> userTaskRecods) {
-                List<UserTaskRecod> userTaskRecodList = userTaskRecods.subList(0, userTaskRecods.size());
-                consumer.applay(userTaskRecodList);
-            }
-        });
+        if(DBManager.getInstance() == null){
+            return;
+        }
+
+        List<UserTaskRecod> userTaskList = DBManager.getInstance().getUserTaskRecodDao().queryRaw("where user_Id = ?", userId + "");
+        consumer.applay(userTaskList);
     }
 }

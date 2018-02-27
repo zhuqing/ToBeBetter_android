@@ -1,26 +1,23 @@
 package xyz.tobebetter.entity;
 
+import org.greenrobot.greendao.annotation.*;
+
 import java.io.Serializable;
 
-import io.realm.RealmModel;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
 
 /**
  * Created by zhuleqi on 2018/2/10.
  */
+@org.greenrobot.greendao.annotation.Entity
 
-public class UserTask   extends RealmObject implements Serializable ,Cloneable {
+public class UserTask  implements Serializable ,Cloneable {
 
-    public final static  Integer STATUS_SYS = 0;
-    public final static  Integer STATUS_CUSTOM_TIME = 1;
-    public final static  Integer STATUS_CUSTOM_TIMEING = 2;
-    @PrimaryKey
+    @Id
     private String id;
     private Long createDate;
     private Long updateDate;
     private Integer status;
+
 
     public Integer getStatus() {
         return status;
@@ -54,9 +51,30 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
     public void setId(String id) {
         this.id = id;
     }
+
+
     private String title;
     private Integer seconds;
     private Long userId;
+
+
+    @Generated(hash = 1202343090)
+    public UserTask(String id, Long createDate, Long updateDate, Integer status,
+            String title, Integer seconds, Long userId) {
+        this.id = id;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.status = status;
+        this.title = title;
+        this.seconds = seconds;
+        this.userId = userId;
+    }
+
+    @Generated(hash = 841106868)
+    public UserTask() {
+    }
+
+
 
 
     /**
@@ -108,4 +126,8 @@ public class UserTask   extends RealmObject implements Serializable ,Cloneable {
     public void setSeconds(Integer seconds) {
         this.seconds = seconds;
     }
+
+
+
+
 }

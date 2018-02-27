@@ -41,13 +41,15 @@ public class TimingUtil {
             @Override
             public void onTick(long millisUntilFinished) {
                 long mills = System.currentTimeMillis()-startTime;
-                long min = mills/1000/60;
+                int min = (int) (mills/1000/60);
+                int hour = min%60;
+                min = min/60;
                 seconds= (int) (mills/1000%60);
 
                 Message message = new Message();
                 message.what = TIMING;
                 Bundle data = new Bundle();
-                data.putString(TIMING_STR,min+":"+seconds);
+                data.putString(TIMING_STR,StringUtil.toTime(hour,min,seconds));
                 message.setData(data);
                 handler.sendMessage(message);
             }

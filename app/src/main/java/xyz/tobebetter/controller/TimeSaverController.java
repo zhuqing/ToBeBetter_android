@@ -16,12 +16,14 @@ import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
 import xyz.tobebetter.database.UserTaskDataManager;
 import xyz.tobebetter.database.UserTaskRecodeDataManager;
+import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.User;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.entity.UserTaskRecod;
 import xyz.tobebetter.pop.UserTaskInputTitleDialog;
 
 /**
+ * 定时任务完成后的保存
  * Created by zhuleqi on 2018/2/12.
  */
 public class TimeSaverController extends Controller{
@@ -47,7 +49,7 @@ public class TimeSaverController extends Controller{
             UserTask  userTask = new UserTask();
             userTask.setTitle(userTaskInputTitleDialog.titleEditText.getText().toString().trim());
             userTask.setUserId(1L);
-            userTask.setStatus(UserTask.STATUS_CUSTOM_TIME);
+            userTask.setStatus(Status.STATUS_CUSTOM_TIME);
             userTask.setId(UUID.randomUUID().toString());
             userTask.setSeconds(getUserTask().getSeconds());
             userTask.setUpdateDate(System.currentTimeMillis());
@@ -56,6 +58,7 @@ public class TimeSaverController extends Controller{
             setUserTask(userTask);
             saveUserTaskRecord();
             userTaskInputTitleDialog.dismiss();
+            toMainAcitvity();
         }
     };
 
@@ -74,7 +77,7 @@ public class TimeSaverController extends Controller{
         this.cancel = this.getView().findViewById(R.id.count_down_save_cancel);
         this.content = this.getView().findViewById(R.id.count_down_save_content);
 
-        if(!UserTask.STATUS_SYS.equals(this.getUserTask().getStatus())){
+        if(!Status.STATUS_SYS.equals(this.getUserTask().getStatus())){
             this.resuse.setVisibility(View.GONE);
         }
         this.reuseHandler();
@@ -99,11 +102,15 @@ public class TimeSaverController extends Controller{
             @Override
             public void onClick(View v) {
                 saveUserTaskRecord();
-                Intent intent = new Intent(getView().getContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                getView().getContext().startActivity(intent);
+                toMainAcitvity();
             }
         });
+    }
+
+    private void toMainAcitvity(){
+        Intent intent = new Intent(getView().getContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        getView().getContext().startActivity(intent);
     }
 
     private void reuseHandler(){

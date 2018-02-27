@@ -1,19 +1,22 @@
 package xyz.tobebetter.entity;
 
+import org.greenrobot.greendao.annotation.*;
+
 import java.io.Serializable;
 
-import io.realm.RealmModel;
-import io.realm.RealmObject;
+
 import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by zhuqing on 2017/7/21.
  */
-public class User   extends RealmObject implements Serializable
+@org.greenrobot.greendao.annotation.Entity
+public class User  implements Serializable
 
     {
 
-        @PrimaryKey
+
+        @Id
         private String id;
         private Long createDate;
         private Long updateDate;
@@ -55,6 +58,22 @@ public class User   extends RealmObject implements Serializable
     private String name;
     private String password;
     private String email;
+
+    @Generated(hash = 2115934450)
+    public User(String id, Long createDate, Long updateDate, Integer status,
+            String name, String password, String email) {
+        this.id = id;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.status = status;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+    }
+
+    @Generated(hash = 586692638)
+    public User() {
+    }
 
 
 

@@ -1,22 +1,51 @@
 package xyz.tobebetter.entity;
 
-import java.io.Serializable;
+import org.greenrobot.greendao.annotation.Id;
 
-import io.realm.RealmModel;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import java.io.Serializable;
+import org.greenrobot.greendao.annotation.Generated;
+
 
 /**
  * 用户任务的执行记录
  * Created by zhuleqi on 2018/2/11.
  */
-public class UserTaskRecod   extends RealmObject implements Serializable {
+@org.greenrobot.greendao.annotation.Entity
+public class UserTaskRecod   implements Serializable {
 
-    @PrimaryKey
+
+    private long userTaskId;
+    private Long userId;
+    private String title;
+    private String content;
+
+    @Id
     private String id;
     private Long createDate;
     private Long updateDate;
     private Integer status;
+
+
+
+    @Generated(hash = 1927381430)
+    public UserTaskRecod(long userTaskId, Long userId, String title,
+            String content, String id, Long createDate, Long updateDate,
+            Integer status) {
+        this.userTaskId = userTaskId;
+        this.userId = userId;
+        this.title = title;
+        this.content = content;
+        this.id = id;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.status = status;
+    }
+
+    @Generated(hash = 273789623)
+    public UserTaskRecod() {
+    }
+
+
 
     public Integer getStatus() {
         return status;
@@ -50,10 +79,9 @@ public class UserTaskRecod   extends RealmObject implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
-    private long userTaskId;
-    private Long userId;
-    private String title;
-    private String content;
+
+
+
 
 
     /**

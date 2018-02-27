@@ -16,6 +16,7 @@ import java.util.List;
 
 import xyz.tobebetter.R;
 import xyz.tobebetter.activity.CountDownActivity;
+import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.pop.CustomTimeDialog;
 import xyz.tobebetter.util.BundleUtil;
@@ -41,7 +42,7 @@ public class TimeGridViewController extends Controller<View> {
             int seconds =  customTimeDialog.getSeconds();
             UserTask userTask = new UserTask();
             userTask.setSeconds(seconds);
-            userTask.setStatus(UserTask.STATUS_SYS);
+            userTask.setStatus(Status.STATUS_SYS);
             Intent in = new Intent();
             in.setClass(gridView.getContext(), CountDownActivity.class);
 
@@ -104,7 +105,7 @@ public class TimeGridViewController extends Controller<View> {
             userTask.setId(i * 5 + "");
             userTask.setTitle(i * 5 + "");
             userTask.setSeconds(i * 5 * 60);
-            userTask.setStatus(UserTask.STATUS_SYS);
+            userTask.setStatus(Status.STATUS_SYS);
             userTasks.add(userTask);
         }
 

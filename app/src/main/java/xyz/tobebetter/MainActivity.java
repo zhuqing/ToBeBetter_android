@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import io.realm.Realm;
 import xyz.tobebetter.controller.HomeGridViewController;
+import xyz.tobebetter.database.DBManager;
 import xyz.tobebetter.database.RealmManager;
 import xyz.tobebetter.fragment.HomeFragment;
 import xyz.tobebetter.fragment.LQFragmentAdapter;
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.initViewPage();
         UrlConfigUtil.init(this);
+        DBManager.create(this);
 
         RealmManager.getInstance().initRealm(this.getApplicationContext());
 

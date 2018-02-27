@@ -31,12 +31,10 @@ public class UserTaskDataManager {
 
 
     public void insert(final List<UserTask> userTaskList){
-        Realm.getDefaultInstance().executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.insert(userTaskList);
-            }
-        });
+        if(DBManager.getInstance() == null){
+            return;
+        }
+       DBManager.getInstance().getUserTaskDao().insertInTx(userTaskList);
 
     }
 
@@ -45,17 +43,20 @@ public class UserTaskDataManager {
     }
 
     public void update(UserTask userTask){
-        Realm.getDefaultInstance().insert(Arrays.asList(userTask));
+        if(DBManager.getInstance() == null){
+            return;
+        }
+
+        DBManager.getInstance().getUserTaskDao().update(userTask);
     }
 
     public void query(int status, final LQHandler.Consumer consumer){
-        RealmResults<UserTask> realmResults = Realm.getDefaultInstance().where(UserTask.class).equalTo("status",status).findAllAsync();
-        realmResults.addChangeListener(new RealmChangeListener<RealmResults<UserTask>>() {
-            @Override
-            public void onChange(RealmResults<UserTask> userTasks) {
-                consumer.applay(userTasks.subList(0, userTasks.size()));
-            }
-        });
+        if(DBManager.getInstance() == null){
+            return;
+        }
+
+        List<UserTask> userTaskList = DBManager.getInstance().getUserTaskDao().queryRaw(" where status = ?", status + "");
+        consumer.applay(userTaskList);
     }
 
 }

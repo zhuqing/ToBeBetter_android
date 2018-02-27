@@ -14,11 +14,13 @@ import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
 import xyz.tobebetter.database.UserTaskDataManager;
 import xyz.tobebetter.database.UserTaskRecodeDataManager;
+import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.entity.UserTaskRecod;
 import xyz.tobebetter.pop.UserTaskInputTitleDialog;
 
 /**
+ * 计时任务完成后的保存
  * Created by zhuleqi on 2018/2/22.
  */
 public class TimingSaverController extends Controller {
@@ -37,7 +39,7 @@ public class TimingSaverController extends Controller {
             UserTask  userTask = new UserTask();
             userTask.setTitle(userTaskInputTitleDialog.titleEditText.getText().toString().trim());
             userTask.setUserId(1L);
-            userTask.setStatus(UserTask.STATUS_CUSTOM_TIME);
+            userTask.setStatus(Status.STATUS_CUSTOM_TIME);
             userTask.setId(UUID.randomUUID().toString());
             userTask.setSeconds(getUserTask().getSeconds());
             userTask.setUpdateDate(System.currentTimeMillis());

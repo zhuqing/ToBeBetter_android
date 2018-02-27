@@ -66,7 +66,7 @@ public class TimingActivity extends AppCompatActivity {
             }
         });
 
-        this.textView.setText("00:00");
+        this.textView.setText("00:00:00");
     }
 
     public void gotoTimingSaver(){

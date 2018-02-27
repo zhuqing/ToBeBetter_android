@@ -19,6 +19,7 @@ import xyz.tobebetter.activity.CountDownActivity;
 import xyz.tobebetter.activity.SelectTimeActivity;
 import xyz.tobebetter.activity.TimingActivity;
 import xyz.tobebetter.database.UserTaskDataManager;
+import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.User;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.util.BundleUtil;
@@ -54,9 +55,9 @@ public class HomeGridViewController extends Controller<View>{
                         in.setClass(gridView.getContext(), TimingActivity.class);
                         break;
                     default:
-                        if (userTask.getStatus() == UserTask.STATUS_CUSTOM_TIME) {
+                        if (userTask.getStatus() == Status.STATUS_CUSTOM_TIME) {
                             in.setClass(gridView.getContext(), CountDownActivity.class);
-                        } else if (userTask.getStatus() == UserTask.STATUS_CUSTOM_TIMEING) {
+                        } else if (userTask.getStatus() == Status.STATUS_CUSTOM_TIMEING) {
                             in.setClass(gridView.getContext(), TimingActivity.class);
 
                         }
@@ -83,13 +84,13 @@ public class HomeGridViewController extends Controller<View>{
                 UserTask tesk = new UserTask();
                 tesk.setTitle("定时");
                 tesk.setId(1 + "");
-                tesk.setStatus(UserTask.STATUS_SYS);
+                tesk.setStatus(Status.STATUS_SYS);
 
                 userTasks.add(tesk);
                 tesk = new UserTask();
                 tesk.setTitle("计时");
                 tesk.setId(2 + "");
-                tesk.setStatus(UserTask.STATUS_SYS);
+                tesk.setStatus(Status.STATUS_SYS);
                 userTasks.add(tesk);
 
                 userTasks.addAll(os);

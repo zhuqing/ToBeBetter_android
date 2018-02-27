@@ -45,13 +45,15 @@ public class TimeUtil {
             @Override
             public void onTick(long millisUntilFinished) {
                 millis = millisUntilFinished;
-                long seconds = millisUntilFinished/1000;
-                long minute = seconds/60;
+                int seconds = (int) (millisUntilFinished/1000);
+                int minute = (int) (seconds/60);
+                int hour = minute/60;
+                minute = minute%60;
                 seconds = seconds%60;
                 Message message = new Message();
                 message.what = CONUT_DOWN;
                 Bundle data = new Bundle();
-                data.putString(TIME_STR,minute+":"+seconds);
+                data.putString(TIME_STR,StringUtil.toTime(hour,minute,seconds));
                 message.setData(data);
                 handler.sendMessage(message);
             }
