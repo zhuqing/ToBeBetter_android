@@ -1,11 +1,7 @@
 package xyz.tobebetter.entity;
 
 import org.greenrobot.greendao.annotation.*;
-
 import java.io.Serializable;
-
-
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by zhuqing on 2017/7/21.
@@ -55,51 +51,82 @@ public class User  implements Serializable
         this.id = id;
     }
 
-    private String name;
-    private String password;
-    private String email;
-
-    @Generated(hash = 2115934450)
-    public User(String id, Long createDate, Long updateDate, Integer status,
-            String name, String password, String email) {
-        this.id = id;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.status = status;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-    }
-
-    @Generated(hash = 586692638)
-    public User() {
-    }
+        private String name;
+        private String password;
+        private String email;
+        /**
+         * 手机号码
+         */
+        private String phonenumber;
 
 
+        /**
+         * 其他系统的Id
+         */
+        private String othersysId;
 
-    public String getName() {
-        return name;
-    }
+        @Generated(hash = 605873965)
+        public User(String id, Long createDate, Long updateDate, Integer status,
+                String name, String password, String email, String phonenumber,
+                String othersysId) {
+            this.id = id;
+            this.createDate = createDate;
+            this.updateDate = updateDate;
+            this.status = status;
+            this.name = name;
+            this.password = password;
+            this.email = email;
+            this.phonenumber = phonenumber;
+            this.othersysId = othersysId;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        @Generated(hash = 586692638)
+        public User() {
+        }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getOthersysId() {
+            return othersysId;
+        }
+
+        public void setOthersysId(String othersysId) {
+            this.othersysId = othersysId;
+        }
+
+        /**
+         * 手机号
+         */
+        public String getPhonenumber() {
+            return phonenumber;
+        }
+
+        public void setPhonenumber(String phonenumber) {
+            this.phonenumber = phonenumber;
+        }
 
 
 }

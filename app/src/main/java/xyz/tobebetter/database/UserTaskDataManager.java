@@ -3,11 +3,13 @@ package xyz.tobebetter.database;
 import java.util.Arrays;
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+
+import xyz.tobebetter.entity.Message;
 import xyz.tobebetter.entity.UserTask;
+import xyz.tobebetter.entity.UserTaskRecod;
+import xyz.tobebetter.sf.LQService;
 import xyz.tobebetter.util.LQHandler;
+import xyz.tobebetter.util.UrlConfigUtil;
 
 /**
  * Created by zhuleqi on 2018/2/12.
@@ -15,6 +17,7 @@ import xyz.tobebetter.util.LQHandler;
 public class UserTaskDataManager {
 
 
+    private String createUrl;
 
     private static UserTaskDataManager userTaskDataManager;
 
@@ -30,12 +33,38 @@ public class UserTaskDataManager {
     }
 
 
-    public void insert(final List<UserTask> userTaskList){
+    public void insert(final UserTask userTask){
         if(DBManager.getInstance() == null){
             return;
         }
-       DBManager.getInstance().getUserTaskDao().insertInTx(userTaskList);
+        DBManager.getInstance().getDaoSession().runInTx(new Runnable() {
+            @Override
+            public void run() {
+                LQService.post(getCreateUrl(), UserTask.class, userTask, null, new LQHandler.Consumer<Message>() {
+                    @Override
+                    public void applay(Message message) {
+                        if (message.getStatus() != Message.ERROR) {
+                            DBManager.getInstance().getUserTaskDao().insert((UserTask) message.getData());
+                        }
 
+                    }
+                });
+            }
+        });
+
+
+
+    }
+
+    public String getCreateUrl(){
+        if(this.createUrl == null){
+            StringBuilder stringBuilder = new StringBuilder();
+            UrlConfigUtil urlConfigUtil = UrlConfigUtil.getInstance();
+            stringBuilder.append(urlConfigUtil.get("HOST")).append(urlConfigUtil.get("USER_TASK_CREATE"));
+            createUrl = stringBuilder.toString();
+        }
+
+        return this.createUrl;
     }
 
     public void query(String id){

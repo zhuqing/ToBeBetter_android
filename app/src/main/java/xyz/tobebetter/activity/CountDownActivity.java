@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
@@ -35,11 +34,7 @@ public class CountDownActivity extends AppCompatActivity {
     private TimeUtil time;
 
     private UserTask userTask;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     public void onStart() {

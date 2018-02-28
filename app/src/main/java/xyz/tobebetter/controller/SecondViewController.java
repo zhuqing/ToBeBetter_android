@@ -30,7 +30,7 @@ public class SecondViewController extends Controller<View> {
     public void init() {
        userTaskListView = this.getView().findViewById(R.id.useTaskRecord_listview);
 
-        UserTaskRecodeDataManager.getInstance().query(1L, new LQHandler.Consumer<List<UserTaskRecod>>() {
+        UserTaskRecodeDataManager.getInstance().query("11", new LQHandler.Consumer<List<UserTaskRecod>>() {
             @Override
             public void applay(List<UserTaskRecod> userTaskRecods) {
                 initAdapter(userTaskRecods);

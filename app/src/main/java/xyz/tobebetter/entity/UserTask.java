@@ -53,28 +53,35 @@ public class UserTask  implements Serializable ,Cloneable {
     }
 
 
+
     private String title;
+    /**
+     *任务时长的秒数
+     */
     private Integer seconds;
-    private Long userId;
+    /**
+     * 任务开始时间
+     */
+    private Long startDate;
+    private String userId;
 
 
-    @Generated(hash = 1202343090)
+    @Generated(hash = 954917785)
     public UserTask(String id, Long createDate, Long updateDate, Integer status,
-            String title, Integer seconds, Long userId) {
+            String title, Integer seconds, Long startDate, String userId) {
         this.id = id;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
         this.title = title;
         this.seconds = seconds;
+        this.startDate = startDate;
         this.userId = userId;
     }
 
     @Generated(hash = 841106868)
     public UserTask() {
     }
-
-
 
 
     /**
@@ -92,41 +99,66 @@ public class UserTask  implements Serializable ,Cloneable {
 
 
 
-    /**
-     * 任务创建的用户Id
-     */
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
+    @Override
     public UserTask clone(){
         UserTask userTask = new UserTask();
         userTask.setId(this.getId());
         userTask.setTitle(this.getTitle());
-        userTask.setUserId(this.getUserId());
-        userTask.setSeconds(this.getSeconds());
+        userTask.setSeconds(seconds);
+        userTask.setStartDate(startDate);
+        userTask.setUserId(userId);
+
         userTask.setStatus(this.getStatus());
         userTask.setCreateDate(this.getCreateDate());
         userTask.setUpdateDate(this.getUpdateDate());
         return userTask;
     }
 
-
     /**
-     * 秒数
+     * 任务时长的秒数
+     * @return the seconds
      */
     public Integer getSeconds() {
         return seconds;
     }
 
+    /**
+     * 任务时长的秒数
+     * @param seconds the seconds to set
+     */
     public void setSeconds(Integer seconds) {
         this.seconds = seconds;
     }
 
+    /**
+     * 任务开始时间
+     * @return the startDate
+     */
+    public Long getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * 任务开始时间
+     * @param startDate the startDate to set
+     */
+    public void setStartDate(Long startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     * @return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 
 

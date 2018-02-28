@@ -24,14 +24,14 @@ public class UserTaskRecodDao extends AbstractDao<UserTaskRecod, String> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property UserTaskId = new Property(0, long.class, "userTaskId", false, "USER_TASK_ID");
-        public final static Property UserId = new Property(1, Long.class, "userId", false, "USER_ID");
-        public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
-        public final static Property Content = new Property(3, String.class, "content", false, "CONTENT");
-        public final static Property Id = new Property(4, String.class, "id", true, "ID");
-        public final static Property CreateDate = new Property(5, Long.class, "createDate", false, "CREATE_DATE");
-        public final static Property UpdateDate = new Property(6, Long.class, "updateDate", false, "UPDATE_DATE");
-        public final static Property Status = new Property(7, Integer.class, "status", false, "STATUS");
+        public final static Property Id = new Property(0, String.class, "id", true, "ID");
+        public final static Property CreateDate = new Property(1, Long.class, "createDate", false, "CREATE_DATE");
+        public final static Property UpdateDate = new Property(2, Long.class, "updateDate", false, "UPDATE_DATE");
+        public final static Property Status = new Property(3, Integer.class, "status", false, "STATUS");
+        public final static Property UserTaskId = new Property(4, String.class, "userTaskId", false, "USER_TASK_ID");
+        public final static Property UserId = new Property(5, String.class, "userId", false, "USER_ID");
+        public final static Property Title = new Property(6, String.class, "title", false, "TITLE");
+        public final static Property Content = new Property(7, String.class, "content", false, "CONTENT");
     };
 
 
@@ -47,14 +47,14 @@ public class UserTaskRecodDao extends AbstractDao<UserTaskRecod, String> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER_TASK_RECOD\" (" + //
-                "\"USER_TASK_ID\" INTEGER NOT NULL ," + // 0: userTaskId
-                "\"USER_ID\" INTEGER," + // 1: userId
-                "\"TITLE\" TEXT," + // 2: title
-                "\"CONTENT\" TEXT," + // 3: content
-                "\"ID\" TEXT PRIMARY KEY NOT NULL ," + // 4: id
-                "\"CREATE_DATE\" INTEGER," + // 5: createDate
-                "\"UPDATE_DATE\" INTEGER," + // 6: updateDate
-                "\"STATUS\" INTEGER);"); // 7: status
+                "\"ID\" TEXT PRIMARY KEY NOT NULL ," + // 0: id
+                "\"CREATE_DATE\" INTEGER," + // 1: createDate
+                "\"UPDATE_DATE\" INTEGER," + // 2: updateDate
+                "\"STATUS\" INTEGER," + // 3: status
+                "\"USER_TASK_ID\" TEXT," + // 4: userTaskId
+                "\"USER_ID\" TEXT," + // 5: userId
+                "\"TITLE\" TEXT," + // 6: title
+                "\"CONTENT\" TEXT);"); // 7: content
     }
 
     /** Drops the underlying database table. */
@@ -66,115 +66,123 @@ public class UserTaskRecodDao extends AbstractDao<UserTaskRecod, String> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, UserTaskRecod entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getUserTaskId());
- 
-        Long userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindLong(2, userId);
-        }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(3, title);
-        }
- 
-        String content = entity.getContent();
-        if (content != null) {
-            stmt.bindString(4, content);
-        }
  
         String id = entity.getId();
         if (id != null) {
-            stmt.bindString(5, id);
+            stmt.bindString(1, id);
         }
  
         Long createDate = entity.getCreateDate();
         if (createDate != null) {
-            stmt.bindLong(6, createDate);
+            stmt.bindLong(2, createDate);
         }
  
         Long updateDate = entity.getUpdateDate();
         if (updateDate != null) {
-            stmt.bindLong(7, updateDate);
+            stmt.bindLong(3, updateDate);
         }
  
         Integer status = entity.getStatus();
         if (status != null) {
-            stmt.bindLong(8, status);
+            stmt.bindLong(4, status);
+        }
+ 
+        String userTaskId = entity.getUserTaskId();
+        if (userTaskId != null) {
+            stmt.bindString(5, userTaskId);
+        }
+ 
+        String userId = entity.getUserId();
+        if (userId != null) {
+            stmt.bindString(6, userId);
+        }
+ 
+        String title = entity.getTitle();
+        if (title != null) {
+            stmt.bindString(7, title);
+        }
+ 
+        String content = entity.getContent();
+        if (content != null) {
+            stmt.bindString(8, content);
         }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, UserTaskRecod entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getUserTaskId());
- 
-        Long userId = entity.getUserId();
-        if (userId != null) {
-            stmt.bindLong(2, userId);
-        }
- 
-        String title = entity.getTitle();
-        if (title != null) {
-            stmt.bindString(3, title);
-        }
- 
-        String content = entity.getContent();
-        if (content != null) {
-            stmt.bindString(4, content);
-        }
  
         String id = entity.getId();
         if (id != null) {
-            stmt.bindString(5, id);
+            stmt.bindString(1, id);
         }
  
         Long createDate = entity.getCreateDate();
         if (createDate != null) {
-            stmt.bindLong(6, createDate);
+            stmt.bindLong(2, createDate);
         }
  
         Long updateDate = entity.getUpdateDate();
         if (updateDate != null) {
-            stmt.bindLong(7, updateDate);
+            stmt.bindLong(3, updateDate);
         }
  
         Integer status = entity.getStatus();
         if (status != null) {
-            stmt.bindLong(8, status);
+            stmt.bindLong(4, status);
+        }
+ 
+        String userTaskId = entity.getUserTaskId();
+        if (userTaskId != null) {
+            stmt.bindString(5, userTaskId);
+        }
+ 
+        String userId = entity.getUserId();
+        if (userId != null) {
+            stmt.bindString(6, userId);
+        }
+ 
+        String title = entity.getTitle();
+        if (title != null) {
+            stmt.bindString(7, title);
+        }
+ 
+        String content = entity.getContent();
+        if (content != null) {
+            stmt.bindString(8, content);
         }
     }
 
     @Override
     public String readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4);
+        return cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0);
     }    
 
     @Override
     public UserTaskRecod readEntity(Cursor cursor, int offset) {
         UserTaskRecod entity = new UserTaskRecod( //
-            cursor.getLong(offset + 0), // userTaskId
-            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // userId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // content
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // id
-            cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5), // createDate
-            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6), // updateDate
-            cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7) // status
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // id
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // createDate
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // updateDate
+            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // status
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // userTaskId
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userId
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // title
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // content
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, UserTaskRecod entity, int offset) {
-        entity.setUserTaskId(cursor.getLong(offset + 0));
-        entity.setUserId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
-        entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setContent(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setId(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setCreateDate(cursor.isNull(offset + 5) ? null : cursor.getLong(offset + 5));
-        entity.setUpdateDate(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
-        entity.setStatus(cursor.isNull(offset + 7) ? null : cursor.getInt(offset + 7));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
+        entity.setCreateDate(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setUpdateDate(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
+        entity.setStatus(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
+        entity.setUserTaskId(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setUserId(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setContent(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.util.Collections;
 import java.util.Map;
 
+import xyz.tobebetter.sf.task.HttpEntityPostTask;
 import xyz.tobebetter.sf.task.HttpGetTask;
 import xyz.tobebetter.sf.task.HttpPostTask;
 import xyz.tobebetter.util.LQHandler;
@@ -33,6 +34,11 @@ public class LQService {
     public static <T> void post(String path , Class claz,Map<String,?> variables,LQHandler.Consumer<T> consumer){
         new HttpPostTask<>(path,claz,consumer,variables).execute();
     }
+
+    public static <T> void post(String path , Class claz,Object entity,Map<String,?> variables,LQHandler.Consumer<T> consumer){
+        new HttpEntityPostTask<>(path,claz,entity,consumer,variables).execute();
+    }
+
 
 
 

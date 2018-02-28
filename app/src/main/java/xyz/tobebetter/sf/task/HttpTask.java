@@ -37,7 +37,7 @@ public abstract   class HttpTask<T> extends AsyncTask<Object, Object, T> {
 
 
             restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-            return this.getT(restTemplate);
+            return this.request(restTemplate);
         } catch (Exception e) {
             Log.e("MainActivity", e.getMessage(), e);
         }
@@ -45,7 +45,7 @@ public abstract   class HttpTask<T> extends AsyncTask<Object, Object, T> {
         return null;
     }
 
-    protected abstract T getT(RestTemplate restTemplate);
+    protected abstract T request(RestTemplate restTemplate);
 
     @Override
     protected void onPostExecute(T t) {

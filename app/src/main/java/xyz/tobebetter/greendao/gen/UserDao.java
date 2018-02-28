@@ -31,6 +31,8 @@ public class UserDao extends AbstractDao<User, String> {
         public final static Property Name = new Property(4, String.class, "name", false, "NAME");
         public final static Property Password = new Property(5, String.class, "password", false, "PASSWORD");
         public final static Property Email = new Property(6, String.class, "email", false, "EMAIL");
+        public final static Property Phonenumber = new Property(7, String.class, "phonenumber", false, "PHONENUMBER");
+        public final static Property OthersysId = new Property(8, String.class, "othersysId", false, "OTHERSYS_ID");
     };
 
 
@@ -52,7 +54,9 @@ public class UserDao extends AbstractDao<User, String> {
                 "\"STATUS\" INTEGER," + // 3: status
                 "\"NAME\" TEXT," + // 4: name
                 "\"PASSWORD\" TEXT," + // 5: password
-                "\"EMAIL\" TEXT);"); // 6: email
+                "\"EMAIL\" TEXT," + // 6: email
+                "\"PHONENUMBER\" TEXT," + // 7: phonenumber
+                "\"OTHERSYS_ID\" TEXT);"); // 8: othersysId
     }
 
     /** Drops the underlying database table. */
@@ -99,6 +103,16 @@ public class UserDao extends AbstractDao<User, String> {
         if (email != null) {
             stmt.bindString(7, email);
         }
+ 
+        String phonenumber = entity.getPhonenumber();
+        if (phonenumber != null) {
+            stmt.bindString(8, phonenumber);
+        }
+ 
+        String othersysId = entity.getOthersysId();
+        if (othersysId != null) {
+            stmt.bindString(9, othersysId);
+        }
     }
 
     @Override
@@ -139,6 +153,16 @@ public class UserDao extends AbstractDao<User, String> {
         if (email != null) {
             stmt.bindString(7, email);
         }
+ 
+        String phonenumber = entity.getPhonenumber();
+        if (phonenumber != null) {
+            stmt.bindString(8, phonenumber);
+        }
+ 
+        String othersysId = entity.getOthersysId();
+        if (othersysId != null) {
+            stmt.bindString(9, othersysId);
+        }
     }
 
     @Override
@@ -155,7 +179,9 @@ public class UserDao extends AbstractDao<User, String> {
             cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // status
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // name
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // password
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // email
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // email
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // phonenumber
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // othersysId
         );
         return entity;
     }
@@ -169,6 +195,8 @@ public class UserDao extends AbstractDao<User, String> {
         entity.setName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setPassword(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setEmail(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setPhonenumber(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setOthersysId(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
      }
     
     @Override

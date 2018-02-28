@@ -15,7 +15,7 @@ public  class HttpGetTask<T> extends HttpTask<T> {
     }
 
     @Override
-    protected T getT(RestTemplate restTemplate) {
+    protected T request(RestTemplate restTemplate) {
        return restTemplate.getForObject(this.getPath(), this.getClaz(),this.getVariables());
     }
 

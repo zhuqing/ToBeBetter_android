@@ -14,10 +14,6 @@ import org.greenrobot.greendao.annotation.Generated;
 public class UserTaskRecod   implements Serializable {
 
 
-    private long userTaskId;
-    private Long userId;
-    private String title;
-    private String content;
 
     @Id
     private String id;
@@ -27,23 +23,6 @@ public class UserTaskRecod   implements Serializable {
 
 
 
-    @Generated(hash = 1927381430)
-    public UserTaskRecod(long userTaskId, Long userId, String title,
-            String content, String id, Long createDate, Long updateDate,
-            Integer status) {
-        this.userTaskId = userTaskId;
-        this.userId = userId;
-        this.title = title;
-        this.content = content;
-        this.id = id;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-        this.status = status;
-    }
-
-    @Generated(hash = 273789623)
-    public UserTaskRecod() {
-    }
 
 
 
@@ -83,26 +62,54 @@ public class UserTaskRecod   implements Serializable {
 
 
 
+    private String userTaskId;
+    private String userId;
+    private String title;
+    private String content;
+
+
+
+
+
+
+    @Generated(hash = 1449064280)
+    public UserTaskRecod(String id, Long createDate, Long updateDate,
+            Integer status, String userTaskId, String userId, String title,
+            String content) {
+        this.id = id;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.status = status;
+        this.userTaskId = userTaskId;
+        this.userId = userId;
+        this.title = title;
+        this.content = content;
+    }
+
+    @Generated(hash = 273789623)
+    public UserTaskRecod() {
+    }
+
 
     /**
      * 用户任务的id
      */
-    public long getUserTaskId() {
+    public String getUserTaskId() {
         return userTaskId;
     }
 
-    public void setUserTaskId(long userTaskId) {
+    public void setUserTaskId(String userTaskId) {
         this.userTaskId = userTaskId;
     }
 
     /**
      * 用户Id
      */
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

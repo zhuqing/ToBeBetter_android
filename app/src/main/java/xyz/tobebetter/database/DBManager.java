@@ -38,12 +38,12 @@ public class DBManager {
     }
 
     private   void init(Context context){
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "notes-db", null);
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "tobebetter-db", null);
         db = helper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
-        daoSession = daoMaster.newSession();
-        userTaskDao = daoSession.getUserTaskDao();
-        this.userTaskRecodDao = daoSession.getUserTaskRecodDao();
+        setDaoSession(daoMaster.newSession());
+        userTaskDao = getDaoSession().getUserTaskDao();
+        this.userTaskRecodDao = getDaoSession().getUserTaskRecodDao();
 
     }
 
@@ -55,5 +55,13 @@ public class DBManager {
 
     public UserTaskDao getUserTaskDao() {
         return userTaskDao;
+    }
+
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
+
+    public void setDaoSession(DaoSession daoSession) {
+        this.daoSession = daoSession;
     }
 }

@@ -30,7 +30,8 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
         public final static Property Status = new Property(3, Integer.class, "status", false, "STATUS");
         public final static Property Title = new Property(4, String.class, "title", false, "TITLE");
         public final static Property Seconds = new Property(5, Integer.class, "seconds", false, "SECONDS");
-        public final static Property UserId = new Property(6, Long.class, "userId", false, "USER_ID");
+        public final static Property StartDate = new Property(6, Long.class, "startDate", false, "START_DATE");
+        public final static Property UserId = new Property(7, String.class, "userId", false, "USER_ID");
     };
 
 
@@ -52,7 +53,8 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
                 "\"STATUS\" INTEGER," + // 3: status
                 "\"TITLE\" TEXT," + // 4: title
                 "\"SECONDS\" INTEGER," + // 5: seconds
-                "\"USER_ID\" INTEGER);"); // 6: userId
+                "\"START_DATE\" INTEGER," + // 6: startDate
+                "\"USER_ID\" TEXT);"); // 7: userId
     }
 
     /** Drops the underlying database table. */
@@ -95,9 +97,14 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
             stmt.bindLong(6, seconds);
         }
  
-        Long userId = entity.getUserId();
+        Long startDate = entity.getStartDate();
+        if (startDate != null) {
+            stmt.bindLong(7, startDate);
+        }
+ 
+        String userId = entity.getUserId();
         if (userId != null) {
-            stmt.bindLong(7, userId);
+            stmt.bindString(8, userId);
         }
     }
 
@@ -135,9 +142,14 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
             stmt.bindLong(6, seconds);
         }
  
-        Long userId = entity.getUserId();
+        Long startDate = entity.getStartDate();
+        if (startDate != null) {
+            stmt.bindLong(7, startDate);
+        }
+ 
+        String userId = entity.getUserId();
         if (userId != null) {
-            stmt.bindLong(7, userId);
+            stmt.bindString(8, userId);
         }
     }
 
@@ -155,7 +167,8 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
             cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // status
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // title
             cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // seconds
-            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6) // userId
+            cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6), // startDate
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // userId
         );
         return entity;
     }
@@ -168,7 +181,8 @@ public class UserTaskDao extends AbstractDao<UserTask, String> {
         entity.setStatus(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
         entity.setTitle(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setSeconds(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
-        entity.setUserId(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
+        entity.setStartDate(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));
+        entity.setUserId(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

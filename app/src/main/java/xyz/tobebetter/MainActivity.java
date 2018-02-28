@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import io.realm.Realm;
+
 import xyz.tobebetter.controller.HomeGridViewController;
 import xyz.tobebetter.database.DBManager;
-import xyz.tobebetter.database.RealmManager;
+
 import xyz.tobebetter.fragment.HomeFragment;
 import xyz.tobebetter.fragment.LQFragmentAdapter;
 import xyz.tobebetter.fragment.SecondFrament;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         UrlConfigUtil.init(this);
         DBManager.create(this);
 
-        RealmManager.getInstance().initRealm(this.getApplicationContext());
+
 
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
 

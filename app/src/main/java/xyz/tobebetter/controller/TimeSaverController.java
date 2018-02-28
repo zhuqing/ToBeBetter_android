@@ -48,13 +48,14 @@ public class TimeSaverController extends Controller{
             }
             UserTask  userTask = new UserTask();
             userTask.setTitle(userTaskInputTitleDialog.titleEditText.getText().toString().trim());
-            userTask.setUserId(1L);
+            userTask.setUserId("11");
             userTask.setStatus(Status.STATUS_CUSTOM_TIME);
             userTask.setId(UUID.randomUUID().toString());
             userTask.setSeconds(getUserTask().getSeconds());
             userTask.setUpdateDate(System.currentTimeMillis());
             userTask.setCreateDate(System.currentTimeMillis());
-            UserTaskDataManager.getInstance().insert(Arrays.asList(userTask));
+            userTask.setStartDate(System.currentTimeMillis());
+            UserTaskDataManager.getInstance().insert(userTask);
             setUserTask(userTask);
             saveUserTaskRecord();
             userTaskInputTitleDialog.dismiss();
@@ -140,9 +141,10 @@ public class TimeSaverController extends Controller{
     private UserTaskRecod createUserTaskRecord(){
         UserTaskRecod userTaskRecod = new UserTaskRecod();
         userTaskRecod.setId(UUID.randomUUID().toString());
-        userTaskRecod.setTitle(Calendar.getInstance().get(Calendar.YEAR)+"-"+ userTask.getTitle());
+        userTaskRecod.setTitle(Calendar.getInstance().get(Calendar.YEAR) + "-" + userTask.getTitle());
         userTaskRecod.setContent(this.content.getText().toString());
-        userTaskRecod.setUserId(1L);
+        userTaskRecod.setUserTaskId(this.getUserTask().getId());
+        userTaskRecod.setUserId("11");
         return userTaskRecod;
     }
 }
