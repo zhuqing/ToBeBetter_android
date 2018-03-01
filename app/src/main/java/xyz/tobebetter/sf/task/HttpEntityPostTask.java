@@ -1,6 +1,10 @@
 package xyz.tobebetter.sf.task;
 
 
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
+import xyz.tobebetter.entity.Message;
 import xyz.tobebetter.util.LQHandler;
 
 /**
@@ -27,17 +32,21 @@ public class HttpEntityPostTask<T> extends HttpTask<T> {
 
     @Override
     protected T request(RestTemplate restTemplate) {
-        HttpHeaders headers = new HttpHeaders();
-        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
-        headers.setContentType(type);
-        headers.add("Accept", MediaType.APPLICATION_JSON.toString());
 
-       // HttpEntity formEntity = new HttpEntity(entity, headers);
+        ResponseEntity<Message> responseEntity =  restTemplate.postForEntity(this.getPath(),this.entity,Message.class,this.getVariables());
+        if(responseEntity.getStatusCode() == HttpStatus.OK){
+            Message message = responseEntity.getBody();
+            if(message.getStatus()==Message.ERROR){
+                throw new RuntimeException(message.getMessage());
+            }
+            String data = (String) message.getData();
 
-        ResponseEntity<T> responseEntity =  restTemplate.postForEntity(this.getPath(),this.entity,this.getClaz(),this.getVariables());
-        if(responseEntity.getStatusCode() != HttpStatus.OK){
-            responseEntity.getBody();
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(MapperFeature.USE_GETTERS_AS_SETTERS, true);
+            return mapper.convertValue(data,this.getClaz());
+
         }
-        return responseEntity.getBody();
+
+        return null;
     }
 }

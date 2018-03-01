@@ -1,7 +1,13 @@
 package xyz.tobebetter.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.greenrobot.greendao.annotation.*;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 
@@ -67,8 +73,8 @@ public class UserTask  implements Serializable ,Cloneable {
 
 
     @Generated(hash = 954917785)
-    public UserTask(String id, Long createDate, Long updateDate, Integer status,
-            String title, Integer seconds, Long startDate, String userId) {
+    public UserTask(String id, Long createDate, Long updateDate, Integer status, String title, Integer seconds,
+            Long startDate, String userId) {
         this.id = id;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -83,6 +89,14 @@ public class UserTask  implements Serializable ,Cloneable {
     public UserTask() {
     }
 
+
+    @JsonCreator
+    public static UserTask create(String jsonString) throws JsonParseException, JsonMappingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        UserTask module = null;
+        module = mapper.readValue(jsonString, UserTask.class);
+        return module;
+    }
 
     /**
      * 任务名称

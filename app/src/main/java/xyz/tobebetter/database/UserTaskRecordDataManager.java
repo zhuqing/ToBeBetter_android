@@ -1,12 +1,10 @@
 package xyz.tobebetter.database;
 
-import java.util.Arrays;
+
+
 import java.util.List;
 
-
-import xyz.tobebetter.entity.Message;
-import xyz.tobebetter.entity.UserTask;
-import xyz.tobebetter.entity.UserTaskRecod;
+import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.sf.LQService;
 import xyz.tobebetter.util.LQHandler;
 import xyz.tobebetter.util.UrlConfigUtil;
@@ -14,24 +12,24 @@ import xyz.tobebetter.util.UrlConfigUtil;
 /**
  * Created by zhuleqi on 2018/2/12.
  */
-public class UserTaskRecodeDataManager {
+public class UserTaskRecordDataManager {
 
-    private static UserTaskRecodeDataManager userTaskRecodeDataManager;
+    private static UserTaskRecordDataManager userTaskRecodeDataManager;
 
     private String createUrl;
 
-    private UserTaskRecodeDataManager() {
+    private UserTaskRecordDataManager() {
 
     }
 
-    public static UserTaskRecodeDataManager getInstance() {
+    public static UserTaskRecordDataManager getInstance() {
         if(userTaskRecodeDataManager == null){
-            userTaskRecodeDataManager = new UserTaskRecodeDataManager();
+            userTaskRecodeDataManager = new UserTaskRecordDataManager();
         }
         return userTaskRecodeDataManager;
     }
 
-    public void insert(final UserTaskRecod userTaskRecod){
+    public void insert(final UserTaskRecord userTaskRecod){
 
         if(DBManager.getInstance() == null){
             return;
@@ -39,11 +37,11 @@ public class UserTaskRecodeDataManager {
         DBManager.getInstance().getDaoSession().runInTx(new Runnable() {
             @Override
             public void run() {
-                LQService.post(getCreateUrl(), Message.class, userTaskRecod, null, new LQHandler.Consumer<Message>() {
+                LQService.post(getCreateUrl(), UserTaskRecord.class, userTaskRecod, null, new LQHandler.Consumer<UserTaskRecord>() {
                     @Override
-                    public void applay(Message message) {
-                        if (message.getStatus() != Message.ERROR){
-                            DBManager.getInstance().getUserTaskRecodDao().insert((UserTaskRecod) message.getData());
+                    public void applay(UserTaskRecord userTaskRecod1) {
+                        if (userTaskRecod1 != null){
+                            DBManager.getInstance().getUserTaskRecordDao().insert( userTaskRecod1);
                         }
 
                     }
@@ -70,7 +68,7 @@ public class UserTaskRecodeDataManager {
             return;
         }
 
-        List<UserTaskRecod> userTaskList = DBManager.getInstance().getUserTaskRecodDao().queryRaw("where user_Id = ?", userId + "");
+        List<UserTaskRecord> userTaskList = DBManager.getInstance().getUserTaskRecordDao().queryRaw("where user_Id = ?", userId + "");
         consumer.applay(userTaskList);
     }
 }

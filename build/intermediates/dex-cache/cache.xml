@@ -1,2 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-compat/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-26.0.0-alpha1_cd655a1d34893287afeeda9012fac3b81eeb368a.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-26.0.0-alpha1_4aa868733ee0b532b7041d669eef928cf2c07742.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao/3.0.0/f493b10a6321c306e426f252adb74688a8a8168e/greendao-3.0.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="f493b10a6321c306e426f252adb74688a8a8168e">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/greendao-3.0.0_560eb842f6d2c2533e1d2fe142bcc8d4a17501b5.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-26.0.0-alpha1_1197aba8cb3f656bdbaa19f5d3e55e22106a9243.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.3.2/f312c56b704fd8aea0b6dea3ee84838131c63297/jackson-annotations-2.3.2.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="f312c56b704fd8aea0b6dea3ee84838131c63297">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.3.2_817d43d87818c2b34070fe875bc1bccd00d81623.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-26.0.0-alpha1_b36efb82f68912fa8581e3ed745cc44759e9f551.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/transition/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-transition-26.0.0-alpha1_20187203a56b5eec03d68101dbb44ca4747e6f13.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-v4/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-26.0.0-alpha1_1f2bda7cda3aa531ede43e42739010d2780757cf.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-26.0.0-alpha1_de581fb3494077777d2234fd667b840d76c0212a.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-generator/3.0.0/ef03fdf4961ef0714ff37ab7480f46c4a437ba5c/greendao-generator-3.0.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="ef03fdf4961ef0714ff37ab7480f46c4a437ba5c">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/greendao-generator-3.0.0_063b27b9c4eeacde252884488a3aa4d479303d3b.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.greenrobot/greendao-api/3.0.0/9170fafb15855927b2e131e4fb7ac47dede441b7/greendao-api-3.0.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="9170fafb15855927b2e131e4fb7ac47dede441b7">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/greendao-api-3.0.0_a3ac8fb4f3fa656cc0bd8ded53136d2f8b7c43b8.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.23/cd143cd8c02a9f838e3cb75a6dfe133750437f6d/freemarker-2.3.23.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="cd143cd8c02a9f838e3cb75a6dfe133750437f6d">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/freemarker-2.3.23_f530fa954bb656ddb1c129e8077d14bca1285cc8.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_89b1e3ad7bb1f02f53b050b43d0a6330ca9c64a1.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.3.2/c75edc740a6d8cb1cef6fa82fa594e0bce561916/jackson-databind-2.3.2.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="c75edc740a6d8cb1cef6fa82fa594e0bce561916">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/jackson-databind-2.3.2_b9b1fd80d65d85eb1ff9888f45d697df58d7fe82.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-26.0.0-alpha1_d4cd80096c48fd2474638062ca1b73b389ba0412.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-26.0.0-alpha1_a921f744fb8e32faf81bc0359476fdd05ee8257d.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.springframework.android/spring-android-rest-template/2.0.0.M3/204c594c2a47073b30d3cb14ca69ba1066c4e44c/spring-android-rest-template-2.0.0.M3.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="204c594c2a47073b30d3cb14ca69ba1066c4e44c">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/spring-android-rest-template-2.0.0.M3_77ddf83f4608db4e21bf7880a4183762c68fbe9f.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-26.0.0-alpha1_1ce3c747526fb087a0473bb9dd5d618ef29a173f.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-26.0.0-alpha1_c279d8cc7bd5903e0d4bbaba35a24cf035fe4557.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/com.android.support/design/26.0.0-alpha1/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/com.android.support-design-26.0.0-alpha1_3c39716f4c0e531533ba63d956b3989b266a8b2f.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/exploded-aar/ToBeBetter_android/leqisoft/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="3b83b8cc21289ca85fb98d3c1c041774fd9a331f">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/ToBeBetter_android-leqisoft-unspecified_ed8bb30b78d2e97398678f0aa10202b8c32d1884.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/org.springframework.android/spring-android-core/2.0.0.M3/c7e2c60943248bbce5de6cf552592281ed2296b/spring-android-core-2.0.0.M3.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="0c7e2c60943248bbce5de6cf552592281ed2296b">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/spring-android-core-2.0.0.M3_1e1175ecace79f5368666e176c147f4b58c6d993.jar" />
+    </item>
+    <item
+        jar="/Users/zhuleqi/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.3.2/559b70ac8a0d5cad611da4223137a920147201ba/jackson-core-2.3.2.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="559b70ac8a0d5cad611da4223137a920147201ba">
+        <dex dex="/Users/zhuleqi/GitHub/ToBeBetter_android/app/build/intermediates/pre-dexed/debug/jackson-core-2.3.2_c223e982fd92f1f06f67ee94334b021a528a4edf.jar" />
+    </item>
+
+</items>

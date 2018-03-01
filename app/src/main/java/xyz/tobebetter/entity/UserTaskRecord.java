@@ -1,7 +1,13 @@
 package xyz.tobebetter.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.greenrobot.greendao.annotation.Id;
 
+import java.io.IOException;
 import java.io.Serializable;
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -11,7 +17,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by zhuleqi on 2018/2/11.
  */
 @org.greenrobot.greendao.annotation.Entity
-public class UserTaskRecod   implements Serializable {
+public class UserTaskRecord   implements Serializable {
 
 
 
@@ -72,10 +78,9 @@ public class UserTaskRecod   implements Serializable {
 
 
 
-    @Generated(hash = 1449064280)
-    public UserTaskRecod(String id, Long createDate, Long updateDate,
-            Integer status, String userTaskId, String userId, String title,
-            String content) {
+    @Generated(hash = 883692322)
+    public UserTaskRecord(String id, Long createDate, Long updateDate, Integer status, String userTaskId, String userId,
+            String title, String content) {
         this.id = id;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -86,9 +91,24 @@ public class UserTaskRecod   implements Serializable {
         this.content = content;
     }
 
-    @Generated(hash = 273789623)
-    public UserTaskRecod() {
+    @Generated(hash = 1580538758)
+    public UserTaskRecord() {
     }
+
+
+
+
+
+
+
+    @JsonCreator
+    public static UserTaskRecord create(String jsonString) throws JsonParseException, JsonMappingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        UserTaskRecord module = null;
+        module = mapper.readValue(jsonString, UserTaskRecord.class);
+        return module;
+    }
+
 
 
     /**

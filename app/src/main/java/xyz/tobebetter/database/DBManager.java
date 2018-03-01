@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import xyz.tobebetter.greendao.gen.DaoMaster;
 import xyz.tobebetter.greendao.gen.DaoSession;
 import xyz.tobebetter.greendao.gen.UserTaskDao;
-import xyz.tobebetter.greendao.gen.UserTaskRecodDao;
+
+import xyz.tobebetter.greendao.gen.UserTaskRecordDao;
 
 /**
  * Created by zhuleqi on 2018/2/26.
@@ -20,7 +21,7 @@ public class DBManager {
 
     private UserTaskDao userTaskDao;
 
-    private UserTaskRecodDao userTaskRecodDao;
+    private UserTaskRecordDao userTaskRecordDao;
 
     private  static DBManager dbManager;
 
@@ -43,13 +44,13 @@ public class DBManager {
         daoMaster = new DaoMaster(db);
         setDaoSession(daoMaster.newSession());
         userTaskDao = getDaoSession().getUserTaskDao();
-        this.userTaskRecodDao = getDaoSession().getUserTaskRecodDao();
+        this.userTaskRecordDao = getDaoSession().getUserTaskRecordDao();
 
     }
 
 
-    public UserTaskRecodDao getUserTaskRecodDao() {
-        return userTaskRecodDao;
+    public UserTaskRecordDao getUserTaskRecordDao() {
+        return userTaskRecordDao;
     }
 
 

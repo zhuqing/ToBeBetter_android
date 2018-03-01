@@ -37,7 +37,7 @@ android {
 
 // 配置GreenDao基本参数
 greendao {
-    schemaVersion 5//当前数据库版本
+    schemaVersion 6//当前数据库版本
     daoPackage 'xyz.tobebetter.greendao.gen'
     targetGenDir 'src/main/java'
 }
@@ -52,10 +52,14 @@ dependencies {
     compile 'org.greenrobot:greendao-generator:3.0.0'
 //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
 //        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
+//    })dependency>
+
 
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.3.2'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.3.2'
+
 //    compile 'com.zzhoujay.richtext:richtext:2.5.4'
 
     testCompile 'junit:junit:4.12'

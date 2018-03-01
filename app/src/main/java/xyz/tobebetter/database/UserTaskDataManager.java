@@ -6,7 +6,7 @@ import java.util.List;
 
 import xyz.tobebetter.entity.Message;
 import xyz.tobebetter.entity.UserTask;
-import xyz.tobebetter.entity.UserTaskRecod;
+
 import xyz.tobebetter.sf.LQService;
 import xyz.tobebetter.util.LQHandler;
 import xyz.tobebetter.util.UrlConfigUtil;
@@ -40,11 +40,11 @@ public class UserTaskDataManager {
         DBManager.getInstance().getDaoSession().runInTx(new Runnable() {
             @Override
             public void run() {
-                LQService.post(getCreateUrl(), UserTask.class, userTask, null, new LQHandler.Consumer<Message>() {
+                LQService.post(getCreateUrl(), UserTask.class, userTask, null, new LQHandler.Consumer<UserTask>() {
                     @Override
-                    public void applay(Message message) {
-                        if (message.getStatus() != Message.ERROR) {
-                            DBManager.getInstance().getUserTaskDao().insert((UserTask) message.getData());
+                    public void applay(UserTask userTask1) {
+                        if (userTask1 != null) {
+                            DBManager.getInstance().getUserTaskDao().insert(userTask1);
                         }
 
                     }

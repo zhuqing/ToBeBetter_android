@@ -15,11 +15,11 @@ import java.util.UUID;
 import xyz.tobebetter.MainActivity;
 import xyz.tobebetter.R;
 import xyz.tobebetter.database.UserTaskDataManager;
-import xyz.tobebetter.database.UserTaskRecodeDataManager;
+import xyz.tobebetter.database.UserTaskRecordDataManager;
 import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.User;
 import xyz.tobebetter.entity.UserTask;
-import xyz.tobebetter.entity.UserTaskRecod;
+import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.pop.UserTaskInputTitleDialog;
 
 /**
@@ -126,8 +126,8 @@ public class TimeSaverController extends Controller{
     }
 
     private void  saveUserTaskRecord(){
-        UserTaskRecod userTaskRecod = this.createUserTaskRecord();
-        UserTaskRecodeDataManager.getInstance().insert(userTaskRecod);
+        UserTaskRecord userTaskRecod = this.createUserTaskRecord();
+        UserTaskRecordDataManager.getInstance().insert(userTaskRecod);
     }
 
     public UserTask getUserTask() {
@@ -138,8 +138,8 @@ public class TimeSaverController extends Controller{
         this.userTask = userTask;
     }
 
-    private UserTaskRecod createUserTaskRecord(){
-        UserTaskRecod userTaskRecod = new UserTaskRecod();
+    private UserTaskRecord createUserTaskRecord(){
+        UserTaskRecord userTaskRecod = new UserTaskRecord();
         userTaskRecod.setId(UUID.randomUUID().toString());
         userTaskRecod.setTitle(Calendar.getInstance().get(Calendar.YEAR) + "-" + userTask.getTitle());
         userTaskRecod.setContent(this.content.getText().toString());

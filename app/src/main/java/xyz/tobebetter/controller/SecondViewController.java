@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 import xyz.tobebetter.R;
-import xyz.tobebetter.database.UserTaskRecodeDataManager;
-import xyz.tobebetter.entity.UserTaskRecod;
+import xyz.tobebetter.database.UserTaskRecordDataManager;
+import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.util.LQHandler;
 
 
@@ -30,9 +30,9 @@ public class SecondViewController extends Controller<View> {
     public void init() {
        userTaskListView = this.getView().findViewById(R.id.useTaskRecord_listview);
 
-        UserTaskRecodeDataManager.getInstance().query("11", new LQHandler.Consumer<List<UserTaskRecod>>() {
+        UserTaskRecordDataManager.getInstance().query("11", new LQHandler.Consumer<List<UserTaskRecord>>() {
             @Override
-            public void applay(List<UserTaskRecod> userTaskRecods) {
+            public void applay(List<UserTaskRecord> userTaskRecods) {
                 initAdapter(userTaskRecods);
             }
         });
@@ -44,7 +44,7 @@ public class SecondViewController extends Controller<View> {
         //TextView subTitle;
     }
 
-    private void initAdapter(List<UserTaskRecod> userTaskRecods){
+    private void initAdapter(List<UserTaskRecord> userTaskRecods){
         UserTaskRecordListViewAdapter userTaskRecordListViewAdapter = new UserTaskRecordListViewAdapter(LayoutInflater.from(this.getView().getContext()));
         userTaskRecordListViewAdapter.setItems(userTaskRecods);
         userTaskListView.setAdapter(userTaskRecordListViewAdapter);
@@ -53,7 +53,7 @@ public class SecondViewController extends Controller<View> {
     }
 
     class UserTaskRecordListViewAdapter extends BaseAdapter {
-        private List<UserTaskRecod> items;
+        private List<UserTaskRecord> items;
 
         private LayoutInflater mInflater;
 
@@ -93,7 +93,7 @@ public class SecondViewController extends Controller<View> {
 
             }
 
-            UserTaskRecod userTaskRecod = (UserTaskRecod) this.getItem(position);
+            UserTaskRecord userTaskRecod = (UserTaskRecord) this.getItem(position);
             if(userTaskRecod == null){
                 return null;
             }
@@ -101,14 +101,14 @@ public class SecondViewController extends Controller<View> {
             return convertView;
         }
 
-        public List<UserTaskRecod> getItems() {
+        public List<UserTaskRecord> getItems() {
             if(this.items == null){
                 return Collections.EMPTY_LIST;
             }
             return items;
         }
 
-        public void setItems(List<UserTaskRecod> items) {
+        public void setItems(List<UserTaskRecord> items) {
             this.items = items;
         }
     }

@@ -5,12 +5,12 @@ package xyz.tobebetter.entity;
 /**
  * Created by zhuleqi on 2018/2/23.
  */
-public class Message<T> {
+public class Message {
     public final static int ERROR = -1;
     public final static int SUCCESS = 0;
     private String message;
     private int status;
-    private T data;
+    private String data;
 
 
 
@@ -22,11 +22,11 @@ public class Message<T> {
         this.message = message;
     }
 
-    public T getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(String data) {
         this.data = data;
     }
 
