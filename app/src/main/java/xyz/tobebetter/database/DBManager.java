@@ -25,8 +25,11 @@ public class DBManager {
 
     private  static DBManager dbManager;
 
+    public static Context context;
+
     public static DBManager create(Context context){
         dbManager = new DBManager(context);
+        context = context;
         return dbManager;
     }
 

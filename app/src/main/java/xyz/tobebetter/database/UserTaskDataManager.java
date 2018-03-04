@@ -1,5 +1,8 @@
 package xyz.tobebetter.database;
 
+import android.app.Application;
+import android.os.AsyncTask;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,38 +29,45 @@ public class UserTaskDataManager {
     }
 
     public static UserTaskDataManager getInstance() {
-        if(userTaskDataManager == null){
+        if (userTaskDataManager == null) {
             userTaskDataManager = new UserTaskDataManager();
         }
         return userTaskDataManager;
     }
 
 
-    public void insert(final UserTask userTask){
-        if(DBManager.getInstance() == null){
+    public void insert(final UserTask userTask) {
+        if (DBManager.getInstance() == null) {
             return;
         }
+
         DBManager.getInstance().getDaoSession().runInTx(new Runnable() {
             @Override
             public void run() {
-                LQService.post(getCreateUrl(), UserTask.class, userTask, null, new LQHandler.Consumer<UserTask>() {
-                    @Override
-                    public void applay(UserTask userTask1) {
-                        if (userTask1 != null) {
-                            DBManager.getInstance().getUserTaskDao().insert(userTask1);
-                        }
+                if (LQService.isNetworkConnected(DBManager.context)) {
+                    LQService.post(getCreateUrl(), UserTask.class, userTask, null, new LQHandler.Consumer<UserTask>() {
+                        @Override
+                        public void applay(UserTask userTask1) {
+                            if (userTask1 != null) {
+                                DBManager.getInstance().getUserTaskDao().insert(userTask1);
+                            }else{
+                                DBManager.getInstance().getUserTaskDao().insert(userTask);
+                            }
 
-                    }
-                });
+                        }
+                    });
+                } else {
+                    DBManager.getInstance().getUserTaskDao().insert(userTask);
+                }
+
             }
         });
 
 
-
     }
 
-    public String getCreateUrl(){
-        if(this.createUrl == null){
+    public String getCreateUrl() {
+        if (this.createUrl == null) {
             StringBuilder stringBuilder = new StringBuilder();
             UrlConfigUtil urlConfigUtil = UrlConfigUtil.getInstance();
             stringBuilder.append(urlConfigUtil.get("HOST")).append(urlConfigUtil.get("USER_TASK_CREATE"));
@@ -67,20 +77,37 @@ public class UserTaskDataManager {
         return this.createUrl;
     }
 
-    public void query(String id){
+    public void query(String id) {
 
     }
 
-    public void update(UserTask userTask){
-        if(DBManager.getInstance() == null){
+    public void update(UserTask userTask) {
+        if (DBManager.getInstance() == null) {
             return;
         }
 
         DBManager.getInstance().getUserTaskDao().update(userTask);
     }
 
-    public void query(int status, final LQHandler.Consumer consumer){
-        if(DBManager.getInstance() == null){
+    public void queryAll(final LQHandler.Consumer consumer){
+       AsyncTask asyncTask =  new AsyncTask<Object,Object,List<UserTask>>(){
+
+            @Override
+            protected List<UserTask> doInBackground(Object[] params) {
+                return DBManager.getInstance().getUserTaskDao().queryRaw("");
+            }
+
+            @Override
+            protected void onPostExecute(List<UserTask> t) {
+                consumer.applay(t);
+            }
+        };
+        asyncTask.execute();
+
+    }
+
+    public void query(int status, final LQHandler.Consumer consumer) {
+        if (DBManager.getInstance() == null) {
             return;
         }
 

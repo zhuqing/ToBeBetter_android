@@ -40,6 +40,7 @@ public abstract   class HttpTask<T> extends AsyncTask<Object, Object, T> {
             return this.request(restTemplate);
         } catch (Exception e) {
             Log.e("MainActivity", e.getMessage(), e);
+            //throws new RuntimeException(e.getMessage());
         }
 
         return null;
