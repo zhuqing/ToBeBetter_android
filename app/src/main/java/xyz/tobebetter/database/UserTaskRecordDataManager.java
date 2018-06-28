@@ -3,6 +3,7 @@ package xyz.tobebetter.database;
 
 import java.util.List;
 
+import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.sf.LQService;
 import xyz.tobebetter.util.LQHandler;
@@ -57,6 +58,7 @@ public class UserTaskRecordDataManager {
 
 
     }
+
 
 
 

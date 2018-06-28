@@ -4,12 +4,15 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 
 import xyz.tobebetter.entity.Message;
 import xyz.tobebetter.entity.UserTask;
 
+import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.sf.LQService;
 import xyz.tobebetter.util.LQHandler;
 import xyz.tobebetter.util.UrlConfigUtil;
@@ -36,10 +39,11 @@ public class UserTaskDataManager {
     }
 
 
-    public void insert(final UserTask userTask) {
+    public void insert(final UserTask userTask, final UserTaskRecord userTaskRecord) {
         if (DBManager.getInstance() == null) {
             return;
         }
+        userTask.setIsSave(false);
 
         DBManager.getInstance().getDaoSession().runInTx(new Runnable() {
             @Override
@@ -49,21 +53,30 @@ public class UserTaskDataManager {
                         @Override
                         public void applay(UserTask userTask1) {
                             if (userTask1 != null) {
-                                DBManager.getInstance().getUserTaskDao().insert(userTask1);
-                            }else{
-                                DBManager.getInstance().getUserTaskDao().insert(userTask);
+                                insertI(userTask1, userTaskRecord);
+                            } else {
+                                insertI(userTask, userTaskRecord);
                             }
 
                         }
                     });
                 } else {
-                    DBManager.getInstance().getUserTaskDao().insert(userTask);
+                    insertI(userTask, userTaskRecord);
                 }
 
             }
         });
 
 
+    }
+
+
+
+
+    public void insertI(UserTask userTask,UserTaskRecord userTaskRecord){
+        DBManager.getInstance().getUserTaskDao().insert(userTask);
+        userTaskRecord.setUserTaskId(userTask.getId());
+        UserTaskRecordDataManager.getInstance().insert(userTaskRecord);
     }
 
     public String getCreateUrl() {

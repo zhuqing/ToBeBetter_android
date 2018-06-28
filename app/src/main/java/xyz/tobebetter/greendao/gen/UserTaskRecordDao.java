@@ -32,6 +32,7 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
         public final static Property UserId = new Property(5, String.class, "userId", false, "USER_ID");
         public final static Property Title = new Property(6, String.class, "title", false, "TITLE");
         public final static Property Content = new Property(7, String.class, "content", false, "CONTENT");
+        public final static Property IsSave = new Property(8, Boolean.class, "isSave", false, "IS_SAVE");
     };
 
 
@@ -54,7 +55,8 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
                 "\"USER_TASK_ID\" TEXT," + // 4: userTaskId
                 "\"USER_ID\" TEXT," + // 5: userId
                 "\"TITLE\" TEXT," + // 6: title
-                "\"CONTENT\" TEXT);"); // 7: content
+                "\"CONTENT\" TEXT," + // 7: content
+                "\"IS_SAVE\" INTEGER);"); // 8: isSave
     }
 
     /** Drops the underlying database table. */
@@ -106,6 +108,11 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
         if (content != null) {
             stmt.bindString(8, content);
         }
+ 
+        Boolean isSave = entity.getIsSave();
+        if (isSave != null) {
+            stmt.bindLong(9, isSave ? 1L: 0L);
+        }
     }
 
     @Override
@@ -151,6 +158,11 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
         if (content != null) {
             stmt.bindString(8, content);
         }
+ 
+        Boolean isSave = entity.getIsSave();
+        if (isSave != null) {
+            stmt.bindLong(9, isSave ? 1L: 0L);
+        }
     }
 
     @Override
@@ -168,7 +180,8 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // userTaskId
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userId
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // title
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // content
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // content
+            cursor.isNull(offset + 8) ? null : cursor.getShort(offset + 8) != 0 // isSave
         );
         return entity;
     }
@@ -183,6 +196,7 @@ public class UserTaskRecordDao extends AbstractDao<UserTaskRecord, String> {
         entity.setUserId(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setContent(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setIsSave(cursor.isNull(offset + 8) ? null : cursor.getShort(offset + 8) != 0);
      }
     
     @Override

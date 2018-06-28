@@ -73,14 +73,15 @@ public class UserTaskRecord   implements Serializable {
     private String title;
     private String content;
 
+    private Boolean isSave;
 
 
 
 
 
-    @Generated(hash = 883692322)
+    @Generated(hash = 1805180489)
     public UserTaskRecord(String id, Long createDate, Long updateDate, Integer status, String userTaskId, String userId,
-            String title, String content) {
+            String title, String content, Boolean isSave) {
         this.id = id;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -89,6 +90,7 @@ public class UserTaskRecord   implements Serializable {
         this.userId = userId;
         this.title = title;
         this.content = content;
+        this.isSave = isSave;
     }
 
     @Generated(hash = 1580538758)
@@ -153,5 +155,16 @@ public class UserTaskRecord   implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Boolean getIsSave() {
+        if(isSave==null){
+            isSave = false;
+        }
+        return isSave;
+    }
+
+    public void setIsSave(Boolean isSave) {
+        this.isSave = isSave;
     }
 }

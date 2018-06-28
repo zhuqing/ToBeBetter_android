@@ -29,7 +29,7 @@ public class DBManager {
 
     public static DBManager create(Context context){
         dbManager = new DBManager(context);
-        context = context;
+        DBManager.context = context;
         return dbManager;
     }
 

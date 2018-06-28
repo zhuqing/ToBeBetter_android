@@ -42,7 +42,7 @@ android {
 
 // 配置GreenDao基本参数
 greendao {
-    schemaVersion 6//当前数据库版本
+    schemaVersion 7//当前数据库版本
     daoPackage 'xyz.tobebetter.greendao.gen'
     targetGenDir 'src/main/java'
 }

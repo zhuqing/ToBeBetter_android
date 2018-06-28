@@ -18,6 +18,7 @@ import xyz.tobebetter.entity.Status;
 import xyz.tobebetter.entity.UserTask;
 import xyz.tobebetter.entity.UserTaskRecord;
 import xyz.tobebetter.pop.UserTaskInputTitleDialog;
+import xyz.tobebetter.util.BundleUtil;
 
 /**
  * 计时任务完成后的保存
@@ -45,10 +46,12 @@ public class TimingSaverController extends Controller {
             userTask.setUpdateDate(System.currentTimeMillis());
             userTask.setCreateDate(System.currentTimeMillis());
             userTask.setStartDate(System.currentTimeMillis());
-            UserTaskDataManager.getInstance().insert(userTask);
-            setUserTask(userTask);
-            saveUserTaskRecord();
+            UserTaskRecord userTaskRecod = createUserTaskRecord();
+            UserTaskDataManager.getInstance().insert(userTask, userTaskRecod);
+
+
             userTaskInputTitleDialog.dismiss();
+            gotoMainActivity(userTask);
         }
     };
 
@@ -88,13 +91,15 @@ public class TimingSaverController extends Controller {
             public void onClick(View v) {
                 userTask.setTitle("完成计时任务");
                 saveUserTaskRecord();
+                gotoMainActivity(null);
             }
         });
     }
 
-    private void gotoMainActivity(){
+    private void gotoMainActivity(UserTask userTask){
         Intent intent = new Intent(getView().getContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtras(BundleUtil.create(BundleUtil.DATA,userTask));
         getView().getContext().startActivity(intent);
     }
 
@@ -111,7 +116,7 @@ public class TimingSaverController extends Controller {
     private void  saveUserTaskRecord(){
         UserTaskRecord userTaskRecod = this.createUserTaskRecord();
         UserTaskRecordDataManager.getInstance().insert(userTaskRecod);
-        this.gotoMainActivity();
+
     }
 
     private UserTaskRecord createUserTaskRecord(){

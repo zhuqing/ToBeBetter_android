@@ -55,9 +55,10 @@ public class TimeSaverController extends Controller{
             userTask.setUpdateDate(System.currentTimeMillis());
             userTask.setCreateDate(System.currentTimeMillis());
             userTask.setStartDate(System.currentTimeMillis());
-            UserTaskDataManager.getInstance().insert(userTask);
+            UserTaskRecord userTaskRecod = createUserTaskRecord();
+            UserTaskDataManager.getInstance().insert(userTask,userTaskRecod);
             setUserTask(userTask);
-            saveUserTaskRecord();
+
             userTaskInputTitleDialog.dismiss();
             toMainAcitvity();
         }
@@ -118,7 +119,7 @@ public class TimeSaverController extends Controller{
         this.resuse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userTaskInputTitleDialog= new UserTaskInputTitleDialog((Activity) getView().getContext(),onClickListener);
+                userTaskInputTitleDialog = new UserTaskInputTitleDialog((Activity) getView().getContext(), onClickListener);
                 userTaskInputTitleDialog.show();
 
             }

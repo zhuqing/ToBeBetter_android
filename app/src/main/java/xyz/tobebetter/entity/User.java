@@ -18,6 +18,8 @@ public class User  implements Serializable
         private Long updateDate;
         private Integer status;
 
+        private Boolean isSave;
+
     public Integer getStatus() {
         return status;
     }
@@ -65,14 +67,15 @@ public class User  implements Serializable
          */
         private String othersysId;
 
-        @Generated(hash = 605873965)
+        @Generated(hash = 720491143)
         public User(String id, Long createDate, Long updateDate, Integer status,
-                String name, String password, String email, String phonenumber,
-                String othersysId) {
+                Boolean isSave, String name, String password, String email,
+                String phonenumber, String othersysId) {
             this.id = id;
             this.createDate = createDate;
             this.updateDate = updateDate;
             this.status = status;
+            this.isSave = isSave;
             this.name = name;
             this.password = password;
             this.email = email;
@@ -129,4 +132,14 @@ public class User  implements Serializable
         }
 
 
-}
+        public Boolean getIsSave() {
+            if(isSave==null){
+                isSave = false;
+            }
+            return isSave;
+        }
+
+        public void setIsSave(Boolean isSave) {
+            this.isSave = isSave;
+        }
+    }

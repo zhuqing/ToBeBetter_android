@@ -71,10 +71,12 @@ public class UserTask  implements Serializable ,Cloneable {
     private Long startDate;
     private String userId;
 
+    private Boolean isSave;
 
-    @Generated(hash = 954917785)
+
+    @Generated(hash = 818544994)
     public UserTask(String id, Long createDate, Long updateDate, Integer status, String title, Integer seconds,
-            Long startDate, String userId) {
+            Long startDate, String userId, Boolean isSave) {
         this.id = id;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -83,6 +85,7 @@ public class UserTask  implements Serializable ,Cloneable {
         this.seconds = seconds;
         this.startDate = startDate;
         this.userId = userId;
+        this.isSave = isSave;
     }
 
     @Generated(hash = 841106868)
@@ -175,5 +178,14 @@ public class UserTask  implements Serializable ,Cloneable {
     }
 
 
+    public Boolean getIsSave() {
+        if(isSave==null){
+            isSave = false;
+        }
+        return isSave;
+    }
 
+    public void setIsSave(Boolean isSave) {
+        this.isSave = isSave;
+    }
 }
